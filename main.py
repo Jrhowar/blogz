@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, render_template, session
+from flask import Flask, request, redirect, render_template, session, flash
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -73,7 +73,8 @@ def new_post():
     if request.method == 'POST':
         title_entry = request.form['title']
         body_entry = request.form['body']
-        
+        error = False
+
         title_error=''
         body_error=''
 
